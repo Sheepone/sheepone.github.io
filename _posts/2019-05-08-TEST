@@ -1,0 +1,54 @@
+---
+
+layout: post
+
+title: Hello World
+
+---
+
+
+오늘은 코틀린 안드로이드 프로젝트에서 오픈 스트리트 맵을 눌렀을 때 발생되는 이벤트를 사용해보려 합니다.
+
+기존에 마커를 눌러 사용하던 방식은 이미 글이 올라와 있지만, 마커를 생성하는 유무에 약간 차이가 있어서 포스팅합니다.
+
+해당 포스트에서는 마커를 생성하지 않고, 지도를 짧게 누르거나 길게 누를 때에 발생할 수 있는 이벤트를 만드려고 합니다.
+
+## 의존성
+
+```java
+    implementation "org.osmdroid:osmdroid-android:6.0.2"
+```
+
+기존에 오픈스트리트 맵을 사용하기 위한 것처험 osmdroid 의존성을 추가합니다.
+
+## 권한
+
+```xml
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"  />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+```
+
+기존에 지도를 사용했던 것처럼 위치 권한, 인터넷 권한, 지도 데이터를 저장할 저장소 권한이 필요합니다.
+
+안드로이드 6.0 이상부터는 따로 권한을 요청하는 작업이 필요합니다.
+
+해당 작업은 이전에 작성한 [권한에 대한 포스팅](https://minwook-shin.github.io/android-kotlin-request-permissions/)을 참고하시면 됩니다.
+
+## 레이아웃 
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
+```
